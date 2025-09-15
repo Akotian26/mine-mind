@@ -39,9 +39,12 @@ class BlockchainAPI {
       return { success: true, data };
     } catch (error) {
       console.error(`API request failed:`, error);
+      const isConnectionError = error instanceof Error && error.message === 'Failed to fetch';
       return { 
         success: false, 
-        message: error instanceof Error ? error.message : 'Unknown error' 
+        message: isConnectionError 
+          ? 'Cannot connect to blockchain server. Please start the Python backend (crypto.py) on port 8000.'
+          : (error instanceof Error ? error.message : 'Unknown error')
       };
     }
   }
