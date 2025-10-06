@@ -63,7 +63,7 @@ class BlockchainAPI {
     });
   }
 
-  async getBlockchain(): Promise<ApiResponse<Block[]>> {
+  async viewChain(): Promise<ApiResponse<Block[]>> {
     return this.request<Block[]>('/view_chain');
   }
 
@@ -74,9 +74,13 @@ class BlockchainAPI {
     });
   }
 
-  async verifyChain(): Promise<ApiResponse<{ valid: boolean }>> {
-    return this.request<{ valid: boolean }>('/verify_chain');
+  async verifyChain(): Promise<ApiResponse<boolean>> {
+    const result = await this.request<{ valid: boolean }>('/verify_chain');
+    if (result.success && result.data) {
+      return { success: true, data: result.data.valid };
+    }
+    return { success: false, message: result.message };
   }
 }
 
-export const blockchainAPI = new BlockchainAPI();
+export const api = new BlockchainAPI();
