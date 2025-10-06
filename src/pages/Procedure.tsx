@@ -1,19 +1,17 @@
 import { Navbar } from "@/components/Navbar";
-import { AimSection } from "@/components/sections/AimSection";
+import { ProcedureSection } from "@/components/sections/ProcedureSection";
 import { Footer } from "@/components/Footer";
 import { BackToTop } from "@/components/BackToTop";
 
-const Index = () => {
+export default function Procedure() {
   return (
     <div className="min-h-screen">
       <Navbar />
       <main>
-        <AimSection />
+        <ProcedureSection />
       </main>
       <Footer />
       <BackToTop />
     </div>
   );
-};
-
-export default Index;
+}

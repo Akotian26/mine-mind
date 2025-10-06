@@ -1,19 +1,17 @@
 import { Navbar } from "@/components/Navbar";
-import { AimSection } from "@/components/sections/AimSection";
+import { ObjectiveSection } from "@/components/sections/ObjectiveSection";
 import { Footer } from "@/components/Footer";
 import { BackToTop } from "@/components/BackToTop";
 
-const Index = () => {
+export default function Objective() {
   return (
     <div className="min-h-screen">
       <Navbar />
       <main>
-        <AimSection />
+        <ObjectiveSection />
       </main>
       <Footer />
       <BackToTop />
     </div>
   );
-};
-
-export default Index;
+}
